@@ -1,0 +1,15 @@
+// 全局样式文件
+
+view {
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100vw;
+  color: $base-color;
+  font-size: $base-font;
+}
+
+.p-40 {
+  padding: 20rpx 40rpx;
+}
