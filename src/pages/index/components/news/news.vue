@@ -5,16 +5,41 @@
       <text class="more">查看更多</text>
     </view>
     <view class="news-content">
-      <text>第十九届全国人民代表大会第一次会议上的讲话</text>
-      <text>第十九届全国人民代表大会第一次会议上的讲话</text>
+      <view
+        class="news-content-item"
+        v-for="item in newsList"
+        :key="item.id"
+        @click="clickOneNew(item.id)"
+      >
+        <view class="item-left">
+          <text class="item-title">{{ item.title }}</text>
+          <text class="item-time"> {{ item.write_time }}</text>
+        </view>
+        <view class="item-right">
+          <image :src="item.image"></image>
+        </view>
+      </view>
     </view>
   </view>
 </template>
 
 <script>
+import { getNews } from "@/http/apis/news";
 export default {
   data() {
-    return {};
+    return {
+      newsList: [],
+    };
+  },
+  async mounted() {
+    this.newsList = await getNews();
+  },
+  methods: {
+    clickOneNew(id) {
+      uni.navigateTo({
+        url: `/pages/newsContext/NewsContext?id=${id}`,
+      });
+    },
   },
 };
 </script>
@@ -27,14 +52,53 @@ export default {
     }
     .more {
       float: right;
-      color: #ccc;
+      color: $light-color;
     }
   }
   &-content {
     margin-top: 20rpx;
-    text {
-      display: block;
-      padding: 10rpx 0;
+    // text {
+    //   display: block;
+    //   padding: 10rpx 0;
+    // }
+    &-item {
+      width: 100%;
+      height: 200rpx;
+      // background-color: #ccc;
+      display: flex;
+      &:first-child {
+        border-top: 1rpx solid $light-color;
+      }
+      border-bottom: 1rpx solid $light-color;
+      padding: 20rpx;
+      .item-left {
+        flex: 5;
+        // background-color: antiquewhite;
+        display: flex;
+        flex-direction: column;
+        padding-right: 10rpx;
+        .item-title {
+          flex: 3;
+          // background-color: aqua;
+          font-size: 30rpx;
+          font-weight: 700;
+        }
+        .item-time {
+          flex: 1;
+          text-align: right;
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          color: $light-color;
+        }
+      }
+      .item-right {
+        flex: 3;
+        image {
+          width: 100%;
+          height: 100%;
+        }
+      }
     }
   }
 }

@@ -5,21 +5,15 @@
 </template>
 
 <script>
+import { getBanners } from "@/http/apis/banner";
 export default {
   data() {
     return {
-      list: [
-        {
-          image: "/static/swiper/1.jpg",
-        },
-        {
-          image: "/static/swiper/2.jpg",
-        },
-        {
-          image: "/static/swiper/3.jpg",
-        },
-      ],
+      list: [],
     };
+  },
+  async mounted() {
+    this.list = await getBanners("/banner/getBanners");
   },
   methods: {},
 };

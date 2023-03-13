@@ -60,7 +60,7 @@ export default {
     },
     jumpToPage() {
       uni.navigateTo({
-        url: "/pages/workGuide/workGuide",
+        url: "/pages/workGuide/WorkGuide",
       });
     },
   },

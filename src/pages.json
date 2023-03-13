@@ -4,36 +4,50 @@
   },
   "pages": [
     {
-      "path": "pages/index/index",
+      "path": "pages/index/Index",
       "style": {
         "navigationBarTitleText": "首页"
       }
     },
     {
-      "path": "pages/user/user",
+      "path": "pages/user/User",
       "style": {
         "navigationBarTitleText": "我的",
         "enablePullDownRefresh": false
       }
     },
     {
-      "path": "pages/news/news",
+      "path": "pages/news/News",
       "style": {
         "navigationBarTitleText": "资讯",
         "enablePullDownRefresh": false
       }
     },
     {
-      "path": "pages/study/study",
+      "path": "pages/study/Study",
       "style": {
         "navigationBarTitleText": "学习",
         "enablePullDownRefresh": false
       }
     },
     {
-      "path": "pages/workGuide/workGuide",
+      "path": "pages/workGuide/WorkGuide",
       "style": {
         "navigationBarTitleText": "工作指南",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/newsContext/NewsContext",
+      "style": {
+        "navigationBarTitleText": "文章详情",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/login/Login",
+      "style": {
+        "navigationBarTitleText": "登录",
         "enablePullDownRefresh": false
       }
     }
@@ -54,25 +68,25 @@
         "iconPath": "static/tabbar/index.png",
         "selectedIconPath": "static/tabbar/index-select.png",
         "text": "首页",
-        "pagePath": "pages/index/index"
+        "pagePath": "pages/index/Index"
       },
       {
         "iconPath": "static/tabbar/news.png",
         "selectedIconPath": "static/tabbar/news-select.png",
         "text": "资讯",
-        "pagePath": "pages/news/news"
+        "pagePath": "pages/news/News"
       },
       {
         "iconPath": "static/tabbar/learn.png",
         "selectedIconPath": "static/tabbar/learn-select.png",
         "text": "学习",
-        "pagePath": "pages/study/study"
+        "pagePath": "pages/study/Study"
       },
       {
         "iconPath": "static/tabbar/me.png",
         "selectedIconPath": "static/tabbar/me-select.png",
         "text": "我",
-        "pagePath": "pages/user/user"
+        "pagePath": "pages/user/User"
       }
     ]
   }
