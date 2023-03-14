@@ -13,3 +13,12 @@ view {
 .p-40 {
   padding: 20rpx 40rpx;
 }
+
+.primary {
+  background-color: rgb(206, 17, 38) !important;
+  border: rgb(206, 17, 38) !important;
+}
+
+uni-page-body {
+  height: 100%;
+}

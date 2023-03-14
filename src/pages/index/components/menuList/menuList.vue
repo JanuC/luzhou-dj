@@ -5,7 +5,7 @@
       class="menu-item"
       v-for="(item, index) in menuList"
       :key="index"
-      @click="jumpToPage"
+      @click="jumpToPage(item.url)"
     >
       <image :src="getMenuImgUrl(item.image)"> </image>
       <text>{{ item.title }}</text>
@@ -22,6 +22,7 @@ export default {
         {
           image: "workbench.png",
           title: "工作指南",
+          url: "/pages/workGuide/WorkGuide"
         },
         {
           image: "zhibu.png",
@@ -42,6 +43,7 @@ export default {
         {
           image: "zuzhi.png",
           title: "组织生活",
+          url: "/pages/organizeLife/OrganizeLife"
         },
         {
           image: "ganbu.png",
@@ -58,9 +60,9 @@ export default {
     getMenuImgUrl(url) {
       return `/static/menu/${url}`;
     },
-    jumpToPage() {
+    jumpToPage(url) {
       uni.navigateTo({
-        url: "/pages/workGuide/WorkGuide",
+        url
       });
     },
   },
