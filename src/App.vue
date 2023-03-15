@@ -1,3 +1,4 @@
+
 <script>
 export default {
   // onLaunch: function () {
@@ -16,4 +17,5 @@ export default {
 /*每个页面公共css */
 @import "uview-ui/index.scss";
 @import "styles/common.scss";
+
 </style>

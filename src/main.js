@@ -3,7 +3,7 @@ import App from "./App";
 import uView from "uview-ui";
 
 // mock 数据
-require("./mock/index");
+// require("./mock/index");
 
 Vue.config.productionTip = false;
 

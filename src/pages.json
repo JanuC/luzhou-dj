@@ -1,6 +1,7 @@
 {
   "easycom": {
-    "^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
+    "^u-(.*)": "uview-ui/components/u-$1/u-$1.vue",
+    "^m-(.*)": "@/components/m-$1/m-$1.vue"
   },
   "pages": [
     {
@@ -63,7 +64,8 @@
     "navigationBarTextStyle": "white",
     "navigationBarTitleText": "泸州党建",
     "navigationBarBackgroundColor": "#CE1126",
-    "backgroundColor": "#F8F8F8"
+    "backgroundColor": "#F8F8F8",
+    "autoscan": true
   },
   "tabBar": {
     "borderStyle": "white",

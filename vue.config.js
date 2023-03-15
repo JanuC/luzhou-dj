@@ -12,4 +12,5 @@ module.exports = {
       .set("@", resolve("./src"))
       .set("components", resolve("./src/components"));
   },
+   transpileDependencies: ['uview-ui'] // 这里可以添加其他需要被编译的 node_modules 里的库
 };
