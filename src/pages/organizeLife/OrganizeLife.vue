@@ -15,13 +15,13 @@
       />
     </view>
     <view class="bottom">
-      <view class="bottom-item">
+      <view class="bottom-item" @click="pageTo('/pages/organizeLife/LaunchMeeting')">
         <view class="img-box">
           <image src="@/static/meet/add.png"></image>
         </view>
         <text>发起会议</text>
       </view>
-      <view class="bottom-item">
+      <view class="bottom-item" @click="pageTo('/pages/organizeLife/MyMeeting')">
         <view class="img-box">
           <image src="@/static/meet/my.png"></image>
         </view>
@@ -133,11 +133,17 @@ export default {
         },
       ],
     };
+
   },
   methods: {
     // showPopup() {
     //   Bus.$emit("isPopupShow", true);
     // },
+    pageTo(url) {
+      uni.navigateTo({
+        url
+      })
+    }
   },
 };
 </script>

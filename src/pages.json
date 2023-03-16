@@ -58,6 +58,20 @@
         "navigationBarTitleText": "会议列表",
         "enablePullDownRefresh": false
       }
+    },
+    {
+      "path": "pages/organizeLife/MyMeeting",
+      "style": {
+        "navigationBarTitleText": "我的会议",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/organizeLife/LaunchMeeting",
+      "style": {
+        "navigationBarTitleText": "发起会议",
+        "enablePullDownRefresh": false
+      }
     }
   ],
   "globalStyle": {

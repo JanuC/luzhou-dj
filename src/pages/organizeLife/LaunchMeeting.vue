@@ -1,0 +1,177 @@
+<template>
+  <view class="launch-meet">
+    <u-form :model="meetForm" ref="uForm" class="meet-form" labelPosition="top">
+      <u-form-item label="会议标题:" prop="title">
+        <u-input v-model="meetForm.title" fontSize="12px" />
+      </u-form-item>
+      <u-form-item label="会议描述:" prop="desc">
+        <u--textarea
+          v-model="meetForm.desc"
+          placeholder="请输入会议描述"
+          count
+          placeholderClass="textarea-holder"
+        ></u--textarea>
+      </u-form-item>
+      <u-form-item label="会议类别:" prop="sort">
+        <m-radio :list="radioList" @getRadioValue="getRadioValue" />
+      </u-form-item>
+      <u-form-item label="会议时间:" prop="date">
+        <m-date-picker @getStartDate="getStartDate" @getEndDate="getEndDate" />
+      </u-form-item>
+      <u-form-item label="会议议程:">
+        <m-step :date="meetForm.date" />
+      </u-form-item>
+      <u-form-item label="参会人员:">
+        123
+      </u-form-item>
+      <u-form-item>
+        <u-button class="submit" @click="submit">提交</u-button>
+      </u-form-item>
+    </u-form>
+  </view>
+</template>
+<script>
+export default {
+  data() {
+    return {
+      radioList: [
+        {
+          name: "三会一课(固定党日)",
+        },
+        {
+          name: "组织生活会(民主评议党员)",
+        },
+        {
+          name: "其他会议",
+        },
+      ],
+      meetForm: {
+        title: "",
+        desc: "",
+        sort: "",
+        date: {
+          startDate: "",
+          endDate: "",
+        },
+      },
+      rules: {
+        title: [
+          {
+            required: true,
+            message: "请输入会议标题",
+            // 可以单个或者同时写两个触发验证方式
+            trigger: ["change", "blur"],
+          },
+          {
+            required: true,
+            min: 7,
+            max: 24,
+            message: "标题为7-24个字符",
+            trigger: ["change", "blur"],
+          },
+        ],
+        desc: [
+          {
+            required: true,
+            message: "请输入会议描述",
+            trigger: ["change", "blur"],
+          },
+        ],
+        // sort: [
+        //   {
+        //     required: true,
+        //     message: "请选择会议类别",
+        //     trigger: ['change']
+        //   }
+        // ]
+        date: [
+          {
+            validator: (rule, value, callback) => {
+              return Boolean(value.startDate) && Boolean(value.endDate);
+            },
+            message: "请确认会议时间",
+            trigger: ["change", "blur"],
+          },
+        ],
+      },
+    };
+  },
+
+  // 必须要在onReady生命周期，因为onLoad生命周期组件可能尚未创建完毕
+  mounted() {
+    this.$refs.uForm.setRules(this.rules);
+  },
+  methods: {
+    // 接收单选框传递过来的值
+    getRadioValue(value) {
+      this.meetForm.sort = value;
+    },
+    // 接收会议开始时间
+    getStartDate(value) {
+      this.meetForm.date.startDate = value;
+    },
+    // 接收会议结束时间
+    getEndDate(value) {
+      this.meetForm.date.endDate = value;
+    },
+    // 提交
+    submit() {
+      console.log(this.meetForm)
+      this.$refs.uForm
+        .validate()
+        .then((res) => {
+          uni.$u.toast("校验通过");
+        })
+        .catch((errors) => {
+          uni.$u.toast("校验失败");
+        });
+    },
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+.launch-meet {
+  padding: 20rpx;
+  ::v-deep .meet-form {
+    font-size: 12px !important;
+
+    .u-form-item {
+      // padding-bottom: 10rpx;
+      position: relative;
+      .u-form-item__body__right__message {
+        position: absolute;
+        bottom: -10rpx;
+      }
+      .u-form-item__body__left {
+        width: 200rpx !important;
+      }
+      .u-form-item__body__right {
+        padding: 0 20rpx;
+      }
+      .u-form-item__body__left__content__label {
+        font-size: $base-font;
+      }
+      .u-textarea {
+        background-color: $base-bg;
+        textarea {
+          color: $base-color;
+          font-size: $base-font;
+          .uni-textarea-placeholder {
+            color: $light-color !important;
+            font-size: $base-font;
+          }
+        }
+        .u-textarea__count {
+          background-color: $base-bg !important;
+        }
+      }
+      .submit {
+        background-color: $primary-color;
+        border-color: $primary-color;
+        color: $white;
+      }
+    }
+  }
+}
+</style>

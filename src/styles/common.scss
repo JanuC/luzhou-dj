@@ -26,3 +26,13 @@ uni-page-body {
 html, body {
   background-color: $base-bg;
 }
+
+
+uni-toast .uni-toast {
+  background-color: $primary-color;
+  font-size: $base-font;
+  padding: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}

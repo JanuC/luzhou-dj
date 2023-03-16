@@ -36,7 +36,7 @@ import Bus from "@/utils/bus.js";
 export default {
   data() {
     return {
-      show: true,
+      show:false,
       meetInfo: {
         title: "八月党干部培训",
         desc: "应上级要求，召开党干部培训大会，各级党员干部必须参加，未参加者将进行严惩！",
