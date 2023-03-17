@@ -12,6 +12,9 @@
           placeholderClass="textarea-holder"
         ></u--textarea>
       </u-form-item>
+      <u-form-item label="会议地址" prop="address">
+        <u-input v-model="meetForm.address"></u-input>
+      </u-form-item>
       <u-form-item label="会议类别:" prop="sort">
         <m-radio :list="radioList" @getRadioValue="getRadioValue" />
       </u-form-item>
@@ -22,10 +25,22 @@
         <m-step :date="meetForm.date" />
       </u-form-item>
       <u-form-item label="参会人员:">
-        123
+        <view class="person-list"
+          ><view class="all-list">
+            <view
+              class="all-list-item"
+              v-for="item in selectPersonList"
+              :key="item.id"
+            >
+              <u-avatar :size="30" :src="item.url" shape="square"></u-avatar>
+              <text class="nickname">{{ item.id }}</text>
+            </view>
+          </view>
+          <m-select-meet-person @getSelectPerson="getSelectPerson" />
+        </view>
       </u-form-item>
       <u-form-item>
-        <u-button class="submit" @click="submit">提交</u-button>
+        <u-button class="submit" @click="submit">发起</u-button>
       </u-form-item>
     </u-form>
   </view>
@@ -48,10 +63,11 @@ export default {
       meetForm: {
         title: "",
         desc: "",
+        address: "",
         sort: "",
         date: {
-          startDate: "",
-          endDate: "",
+          startDate: null,
+          endDate: null,
         },
       },
       rules: {
@@ -77,6 +93,13 @@ export default {
             trigger: ["change", "blur"],
           },
         ],
+        address: [
+          {
+            required: true,
+            message: "请输入会议地址",
+            trigger: ["change", "blur"],
+          },
+        ],
         // sort: [
         //   {
         //     required: true,
@@ -94,6 +117,7 @@ export default {
           },
         ],
       },
+      selectPersonList: null,
     };
   },
 
@@ -109,14 +133,21 @@ export default {
     // 接收会议开始时间
     getStartDate(value) {
       this.meetForm.date.startDate = value;
+      // console.log(value)
     },
     // 接收会议结束时间
     getEndDate(value) {
       this.meetForm.date.endDate = value;
     },
+    // 接收选中的用户
+    getSelectPerson(value) {
+      console.log(value);
+      this.selectPersonList = value;
+      console.log(this.selectPersonList);
+    },
     // 提交
     submit() {
-      console.log(this.meetForm)
+      // console.log(this.meetForm)
       this.$refs.uForm
         .validate()
         .then((res) => {
@@ -166,10 +197,41 @@ export default {
           background-color: $base-bg !important;
         }
       }
+      .u-form-item__body__right__message {
+        margin-left: 20rpx !important;
+      }
       .submit {
         background-color: $primary-color;
         border-color: $primary-color;
         color: $white;
+      }
+      .person-list {
+        width: 100%;
+        padding-top: 20rpx;
+        .all-list {
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+          &-item {
+            width: 20%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            jusity-content: space-around;
+            margin-bottom: 20rpx;
+            .nickname {
+              display: inline-block;
+              margin-top: 10rpx;
+              text-align: center;
+              width: 80%;
+              font-size: 14rpx;
+              text-overflow: ellipsis;
+              overflow: hidden;
+              word-break: break-all;
+              white-space: nowrap;
+            }
+          }
+        }
       }
     }
   }

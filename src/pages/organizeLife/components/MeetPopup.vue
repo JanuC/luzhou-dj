@@ -73,7 +73,7 @@ export default {
 <style lang="scss" scoped>
 .meet-popup {
   // width: 100%;
-  width: 600rpx;
+  width: 520rpx;
   // height: 600rpx;
   padding: 20rpx;
   font-size: $base-font;

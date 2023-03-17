@@ -15,6 +15,7 @@
       v-model="date"
       mode="datetime"
       :minDate="minDate"
+      confirmColor="#ce1126"
       @confirm="confirmDate"
       @cancel="() => show = false"
     ></u-datetime-picker>
@@ -49,12 +50,10 @@ export default {
   computed: {
     // 最小时间：当前时间的10分钟之后
     minDate() {
-      return new Date().getTime() + 60 * 10 * 1000;
+      return this.startDate.date ? this.startDate.date : new Date().getTime() + 60 * 10 * 1000;
     },
   },
-  mounted() {
-    
-  },
+  
   methods: {
     selectDate(type) {
       this.clickDateType = type;
@@ -77,12 +76,12 @@ export default {
       if (this.clickDateType === "start") {
         this.startDate.dateString = useFormatterDate(data.value);
         this.startDate.date = data.value;
-        this.$emit('getStartDate', this.startDate.dateString)
+        this.$emit('getStartDate', this.startDate.date)
       }
       if (this.clickDateType === "end") {
         this.endDate.dateString = useFormatterDate(data.value);
         this.endDate.date = data.value;
-        this.$emit('getEndDate', this.endDate.dateString)
+        this.$emit('getEndDate', this.endDate.date)
       }
 
       this.show = false;
