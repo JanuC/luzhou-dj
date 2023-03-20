@@ -23,10 +23,10 @@ uni-page-body {
   height: 100%;
 }
 
-html, body {
+html,
+body {
   background-color: $base-bg;
 }
-
 
 uni-toast .uni-toast {
   background-color: $primary-color;
@@ -35,4 +35,24 @@ uni-toast .uni-toast {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+}
+
+.box-shadow {
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.status-in {
+  color: #5ac725;
+}
+.status-out {
+  color: #f56c6c;
+}
+.status-soon {
+  color: #f9ae3d;
+}
+
+.text-nowrap {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-all;
+  white-space: nowrap;
 }

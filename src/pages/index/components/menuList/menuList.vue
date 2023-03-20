@@ -30,7 +30,8 @@ export default {
         },
         {
           image: "toupiao.png",
-          title: "投票管理",
+          title: "投票活动",
+          url: "/pages/vote/Vote"
         },
         {
           image: "dangfei.png",

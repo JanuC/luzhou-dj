@@ -72,6 +72,12 @@
         "navigationBarTitleText": "发起会议",
         "enablePullDownRefresh": false
       }
+    },
+    {
+      "path": "pages/vote/Vote",
+      "style": {
+        "navigationBarTitleText": "投票活动"
+      }
     }
   ],
   "globalStyle": {

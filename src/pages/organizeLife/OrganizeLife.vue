@@ -15,13 +15,19 @@
       />
     </view>
     <view class="bottom">
-      <view class="bottom-item" @click="pageTo('/pages/organizeLife/LaunchMeeting')">
+      <view
+        class="bottom-item"
+        @click="pageTo('/pages/organizeLife/LaunchMeeting')"
+      >
         <view class="img-box">
           <image src="@/static/meet/add.png"></image>
         </view>
         <text>发起会议</text>
       </view>
-      <view class="bottom-item" @click="pageTo('/pages/organizeLife/MyMeeting')">
+      <view
+        class="bottom-item"
+        @click="pageTo('/pages/organizeLife/MyMeeting')"
+      >
         <view class="img-box">
           <image src="@/static/meet/my.png"></image>
         </view>
@@ -41,12 +47,12 @@
 <script>
 // import Bus from "@/utils/bus.js";
 import MeetingItem from "./components/MeetingItem.vue";
-import MeetPopup from './components/MeetPopup.vue'
+import MeetPopup from "./components/MeetPopup.vue";
 export default {
   components: {
     MeetingItem,
-    MeetPopup
-},
+    MeetPopup,
+  },
   data() {
     return {
       meetingList: [
@@ -58,6 +64,7 @@ export default {
           week: "星期一",
           time: "11:00-12:00",
           sort: "党员大会",
+          status: 1,
         },
         {
           id: 8,
@@ -67,6 +74,7 @@ export default {
           week: "星期二",
           time: "11:00-12:00",
           sort: "党小组会",
+          status: 1,
         },
         {
           id: 7,
@@ -76,6 +84,7 @@ export default {
           week: "星期三",
           time: "11:00-12:00",
           sort: "党小组会",
+          status: 2,
         },
         {
           id: 6,
@@ -85,6 +94,7 @@ export default {
           week: "星期四",
           time: "11:00-12:00",
           sort: "党员大会",
+          status: 2,
         },
         {
           id: 5,
@@ -94,6 +104,7 @@ export default {
           week: "星期天",
           time: "11:00-12:00",
           sort: "党员大会",
+          status: -1,
         },
         {
           id: 4,
@@ -103,6 +114,7 @@ export default {
           week: "星期五",
           time: "11:00-12:00",
           sort: "党员大会",
+          status: -1,
         },
         {
           id: 3,
@@ -112,6 +124,7 @@ export default {
           week: "星期六",
           time: "11:00-12:00",
           sort: "党员大会",
+          status: -1,
         },
         {
           id: 2,
@@ -121,6 +134,7 @@ export default {
           week: "星期一",
           time: "11:00-12:00",
           sort: "党员大会",
+          status: 0,
         },
         {
           id: 1,
@@ -130,10 +144,13 @@ export default {
           week: "星期一",
           time: "11:00-12:00",
           sort: "党员大会",
+          status: 0,
         },
       ],
     };
-
+  },
+  mounted() {
+    this.sortMeetList()
   },
   methods: {
     // showPopup() {
@@ -141,8 +158,11 @@ export default {
     // },
     pageTo(url) {
       uni.navigateTo({
-        url
-      })
+        url,
+      });
+    },
+    sortMeetList() {
+      this.meetingList.sort((a, b) => b.status- a.status)
     }
   },
 };

@@ -2,6 +2,7 @@ import Vue from "vue";
 import App from "./App";
 import uView from "uview-ui";
 
+import plugin from "@/utils/plugin"
 // mock 数据
 // require("./mock/index");
 
@@ -9,6 +10,8 @@ Vue.config.productionTip = false;
 
 App.mpType = "app";
 Vue.use(uView);
+// 注册全局方法
+Vue.use(plugin);
 function isPromise(obj) {
   return (
     !!obj &&

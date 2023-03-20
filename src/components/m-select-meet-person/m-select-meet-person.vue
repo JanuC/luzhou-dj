@@ -106,6 +106,7 @@ export default {
     selectAll(value) {
       if (value) {
         // 全选
+        this.selectPersonList= [];
         this.allPersonList.forEach((item) => {
           this.selectPersonList.push(item);
         });

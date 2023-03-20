@@ -21,15 +21,15 @@
       <u-form-item label="会议时间:" prop="date">
         <m-date-picker @getStartDate="getStartDate" @getEndDate="getEndDate" />
       </u-form-item>
-      <u-form-item label="会议议程:">
-        <m-step :date="meetForm.date" />
+      <u-form-item label="会议议程:" >
+        <m-step :date="meetForm.date" @getAgenda="getAgenda" />
       </u-form-item>
-      <u-form-item label="参会人员:">
+      <u-form-item label="参会人员:" prop="attendees">
         <view class="person-list"
           ><view class="all-list">
             <view
               class="all-list-item"
-              v-for="item in selectPersonList"
+              v-for="item in meetForm.attendees"
               :key="item.id"
             >
               <u-avatar :size="30" :src="item.url" shape="square"></u-avatar>
@@ -69,6 +69,8 @@ export default {
           startDate: null,
           endDate: null,
         },
+        agenda: null,
+        attendees: []
       },
       rules: {
         title: [
@@ -116,11 +118,18 @@ export default {
             trigger: ["change", "blur"],
           },
         ],
+        attendees: [
+          {
+            validator: (rule, value, callback) => {
+              return Boolean(this.meetForm.attendees.length);
+            },
+            message: "请至少选择一个参会人员",
+            trigger: ["change", "blur"]
+          }
+        ]
       },
-      selectPersonList: null,
     };
   },
-
   // 必须要在onReady生命周期，因为onLoad生命周期组件可能尚未创建完毕
   mounted() {
     this.$refs.uForm.setRules(this.rules);
@@ -139,11 +148,14 @@ export default {
     getEndDate(value) {
       this.meetForm.date.endDate = value;
     },
+    // 接收议程
+    getAgenda(value) {
+      this.meetForm.agenda = value;
+    },
     // 接收选中的用户
     getSelectPerson(value) {
-      console.log(value);
-      this.selectPersonList = value;
-      console.log(this.selectPersonList);
+      this.meetForm.attendees = [...value];
+      // this.meetForm.attendees = value
     },
     // 提交
     submit() {
@@ -151,7 +163,12 @@ export default {
       this.$refs.uForm
         .validate()
         .then((res) => {
-          uni.$u.toast("校验通过");
+          uni.$u.toast("发起会议成功");
+          // this.$refs.uForm.resetFields();
+          uni.navigateTo({
+            url: `/pages/organizeLife/MyMeeting?current=1`
+          })
+
         })
         .catch((errors) => {
           uni.$u.toast("校验失败");

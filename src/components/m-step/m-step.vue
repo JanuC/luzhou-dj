@@ -139,7 +139,8 @@ export default {
         this.timePickerData.show = true;
         this.timePickerData.title = "请选择结束时间";
         // 结束的时间应该在开始时间到会议最后的时间之间
-        this.timePickerData.minDate = this.agendaForm.startDate || this.date.startDate 
+        this.timePickerData.minDate =
+          this.agendaForm.startDate || this.date.startDate;
       }
     },
     getStart(value) {
@@ -156,17 +157,18 @@ export default {
       this.$refs.uForm.validate().then((value) => {
         if (value) {
           // 校验成功
-          this.agendaList.push({...this.agendaForm});
+          this.agendaList.push({ ...this.agendaForm });
+          console.log("校验")
+          this.$emit("getAgenda", this.agendaList);
+
           this.$refs.uForm.resetFields();
           this.agendaStart = this.agendaEnd = null;
           // console.log(this.agendaList);
           this.isPopupShow = false;
+          // 提交议程
         }
       });
-     
-
     },
-    
   },
 };
 </script>
@@ -181,7 +183,6 @@ export default {
     // align-items: center;
     ::v-deep .u-steps-item > .u-steps-item__wrapper {
       background: $base-bg;
-     
     }
   }
   .agenda-popup {
