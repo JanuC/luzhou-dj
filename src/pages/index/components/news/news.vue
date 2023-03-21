@@ -2,7 +2,7 @@
   <view class="news p-40">
     <view class="news-title">
       <text class="title">新闻资讯</text>
-      <text class="more">查看更多</text>
+      <text class="more" @click="jumpToNews">查看更多</text>
     </view>
     <view class="news-content">
       <view
@@ -40,6 +40,11 @@ export default {
         url: `/pages/newsContext/NewsContext?id=${id}`,
       });
     },
+    jumpToNews() {
+      uni.switchTab({
+        url: '/pages/news/News'
+      })
+    }
   },
 };
 </script>

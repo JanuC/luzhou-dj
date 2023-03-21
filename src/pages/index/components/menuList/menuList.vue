@@ -22,7 +22,7 @@ export default {
         {
           image: "workbench.png",
           title: "工作指南",
-          url: "/pages/workGuide/WorkGuide"
+          url: "/pages/workGuide/WorkGuide",
         },
         {
           image: "zhibu.png",
@@ -31,7 +31,7 @@ export default {
         {
           image: "toupiao.png",
           title: "投票活动",
-          url: "/pages/vote/Vote"
+          url: "/pages/vote/Vote",
         },
         {
           image: "dangfei.png",
@@ -40,11 +40,12 @@ export default {
         {
           image: "xuexi.png",
           title: "在线学习",
+          url: "/pages/study/Study",
         },
         {
           image: "zuzhi.png",
           title: "组织生活",
-          url: "/pages/organizeLife/OrganizeLife"
+          url: "/pages/organizeLife/OrganizeLife",
         },
         {
           image: "ganbu.png",
@@ -55,6 +56,8 @@ export default {
           title: "人才工作",
         },
       ],
+      // tabBar 页面
+      // tabBarList: ['/pages/study/Study', '/pages/']
     };
   },
   methods: {
@@ -62,9 +65,14 @@ export default {
       return `/static/menu/${url}`;
     },
     jumpToPage(url) {
-      uni.navigateTo({
-        url
-      });
+      // 如果需要跳转的时 tabBar 页面，使用 switchTab
+      if (url === "/pages/study/Study") {
+        uni.switchTab({ url });
+      } else {
+        uni.navigateTo({
+          url,
+        });
+      }
     },
   },
 };

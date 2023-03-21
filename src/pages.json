@@ -27,7 +27,7 @@
     {
       "path": "pages/study/Study",
       "style": {
-        "navigationBarTitleText": "学习",
+        "navigationBarTitleText": "在线学习",
         "enablePullDownRefresh": false
       }
     },
@@ -89,7 +89,7 @@
   },
   "tabBar": {
     "borderStyle": "white",
-    "backgroundColor": "#F7F7F7",
+    "backgroundColor": "#fff",
     "color": "#000000",
     "selectedColor": "#CE1126",
     "list": [
