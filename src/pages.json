@@ -78,6 +78,18 @@
       "style": {
         "navigationBarTitleText": "投票活动"
       }
+    },
+    {
+      "path": "pages/taskList/TaskList",
+      "style": {
+        "navigationBarTitleText": "任务列表"
+      }
+    },
+    {
+      "path": "pages/lessonDetail/LessonDetail",
+      "style": {
+        "navigationBarTitleText": "课程详情"
+      }
     }
   ],
   "globalStyle": {

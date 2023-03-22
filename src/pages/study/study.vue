@@ -7,7 +7,10 @@
         <!-- <text class="more">查看更多</text> -->
       </view>
       <view class="content">
-        <view class="task-list content-item">
+        <view
+          class="task-list content-item"
+          @click="jumpToPage('/pages/taskList/TaskList')"
+        >
           <view class="image-box">
             <image src="/static/study/list.png"></image>
           </view>
@@ -33,27 +36,78 @@
         <view class="content-item">
           <view class="item-title"> 文件精神 </view>
           <view class="item-list">
-            <view class="item-list-item">内容</view>
-            <view class="item-list-item">内容</view>
-            <view class="item-list-item">内容</view>
+            <view class="item-list-item">
+              <view class="image">
+                <image src="/static/study/video.jpeg"></image>
+              </view>
+              <view class="video-text">永远跟党走</view>
+            </view>
+            <view class="item-list-item">
+              <view class="image">
+                <image src="/static/study/video.jpeg"></image>
+              </view>
+              <view class="video-text">永远跟党走</view>
+            </view>
+            <view class="item-list-item">
+              <view class="image">
+                <image src="/static/study/video.jpeg"></image>
+              </view>
+              <view class="video-text text-nowrap"
+                >永远跟党走永远跟党走永远跟党走永远跟党走</view
+              >
+            </view>
           </view>
           <view class="more">查看更多</view>
         </view>
         <view class="content-item">
           <view class="item-title"> 党史学习 </view>
           <view class="item-list">
-            <view class="item-list-item">内容</view>
-            <view class="item-list-item">内容</view>
-            <view class="item-list-item">内容</view>
+            <view class="item-list-item">
+              <view class="image">
+                <image src="/static/study/video.jpeg"></image>
+              </view>
+              <view class="video-text">永远跟党走</view>
+            </view>
+            <view class="item-list-item">
+              <view class="image">
+                <image src="/static/study/video.jpeg"></image>
+              </view>
+              <view class="video-text">永远跟党走</view>
+            </view>
+            <view class="item-list-item">
+              <view class="image">
+                <image src="/static/study/video.jpeg"></image>
+              </view>
+              <view class="video-text text-nowrap"
+                >永远跟党走永远跟党走永远跟党走永远跟党走</view
+              >
+            </view>
           </view>
           <view class="more">查看更多</view>
         </view>
         <view class="content-item">
           <view class="item-title"> 在线视频 </view>
           <view class="item-list video">
-            <view class="item-list-item">内容</view>
-            <view class="item-list-item">内容</view>
-            <view class="item-list-item">内容</view>
+            <view class="item-list-item">
+              <view class="image">
+                <image src="/static/study/video.jpeg"></image>
+              </view>
+              <view class="video-text">永远跟党走</view>
+            </view>
+            <view class="item-list-item">
+              <view class="image">
+                <image src="/static/study/video.jpeg"></image>
+              </view>
+              <view class="video-text">永远跟党走</view>
+            </view>
+            <view class="item-list-item">
+              <view class="image">
+                <image src="/static/study/video.jpeg"></image>
+              </view>
+              <view class="video-text text-nowrap"
+                >永远跟党走永远跟党走永远跟党走永远跟党走</view
+              >
+            </view>
           </view>
           <view class="more">查看更多</view>
         </view>
@@ -84,26 +138,21 @@ export default {
   data() {
     return {};
   },
+  methods: {
+    jumpToPage(url) {
+      uni.navigateTo({ url });
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .study {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  padding-bottom: calc(50px + 20rpx);
   .title {
     font-size: $medium-font;
     font-weight: 700;
     color: $primary-color;
-    // display: flex;
-    // justify-content: space-between;
-    // .more {
-    //   font-size: $base-font;
-    //   color: $light-color;
-    //   font-weight: normal;
-    // }
   }
   .mb-20 {
     background-color: $white;
@@ -142,7 +191,7 @@ export default {
     flex: 1;
   }
   .lessons {
-    flex: 4;
+    flex: 5;
     .content {
       flex-direction: column;
       &-item {
@@ -167,21 +216,39 @@ export default {
           border-radius: 10rpx;
         }
         .item-list {
+          width: 100%;
           flex: 1;
           padding-top: 20rpx;
           display: flex;
           // padding: 10rpx 10rpx;
-          flex-direction: column;
-          justify-content: space-around;
-          &-item {
-            flex: 1;
-          } 
-          
-        }
-        .video {
-          width: 100%;
           flex-direction: row;
+          justify-content: space-around;
+          // &-item {
+          //   flex: 1;
+          // }
+          .item-list-item {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            .image {
+              width: 160rpx;
+              height: 100rpx;
+              border-radius: 10rpx;
+              overflow: hidden;
+              image {
+                width: 100%;
+                height: 100%;
+              }
+            }
+            .video-text {
+              width: 180rpx;
+              text-align: center;
+              margin-top: 10rpx;
+            }
+          }
         }
+
         .more {
           width: 100%;
           text-align: right;

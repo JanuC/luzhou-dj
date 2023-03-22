@@ -1,10 +1,10 @@
 <template>
   <view class="vote">
-    <m-list title="投票" :data="voteList">
+    <m-list-vote title="投票" :data="voteList">
       <!-- <template v-slot:m-popup="slotProps"> -->
       <!--   <m-popup :show="slotProps.showPopup"></m-popup> -->
       <!-- </template> -->
-    </m-list>
+    </m-list-vote>
     <view class="editor">
       <u-icon name="edit-pen"></u-icon>
       <text class="apply"> 发起投票 </text>

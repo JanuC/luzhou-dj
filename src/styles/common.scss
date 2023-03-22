@@ -4,6 +4,10 @@ view {
   box-sizing: border-box;
 }
 
+image {
+  display: block;
+}
+
 .container {
   width: 100vw;
   color: $base-color;
