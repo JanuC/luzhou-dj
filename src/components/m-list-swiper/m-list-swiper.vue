@@ -7,6 +7,7 @@
       :current="current"
       @change="changeCurrent"
     ></u-subsection>
+    <slot name="time-picker"></slot>
     <m-empty v-if="config.noData" :title="emptyData" />
     <view v-else class="list-data">
       <swiper class="swiper" :current="current" @change="changeCurrent">
@@ -57,7 +58,7 @@ export default {
   height: 100%;
   .list-data {
     margin-top: 20rpx;
-    height: calc(100% - 46px);
+    height: calc(100% - 46px - 22.5px);
     .swiper {
       height: 100%;
       overflow-y: scroll;

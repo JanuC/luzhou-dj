@@ -90,6 +90,12 @@
       "style": {
         "navigationBarTitleText": "课程详情"
       }
+    },
+    {
+      "path": "pages/creditRank/CreditRank",
+      "style": {
+        "navigationBarTitleText": "学分排名"
+      }
     }
   ],
   "globalStyle": {

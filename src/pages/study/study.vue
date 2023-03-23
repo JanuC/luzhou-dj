@@ -16,7 +16,7 @@
           </view>
           <text>任务列表</text>
         </view>
-        <view class="credit-rank content-item">
+        <view class="credit-rank content-item" @click="jumpToPage('/pages/creditRank/CreditRank')">
           <view class="image-box">
             <image src="/static/study/rank.png"></image>
           </view>
