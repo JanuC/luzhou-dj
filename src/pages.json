@@ -96,6 +96,24 @@
       "style": {
         "navigationBarTitleText": "学分排名"
       }
+    },
+    {
+      "path": "pages/creditBreakdown/CreditBreakdown",
+      "style": {
+        "navigationBarTitleText": "学分明细"
+      }
+    },
+    {
+      "path": "pages/lessonsList/LessonsList",
+      "style": {
+        "navigationBarTitleText": "课程列表"
+      }
+    },
+    {
+      "path": "pages/answer/Answer",
+      "style": {
+        "navigationBarTitleText": "专项答题"
+      }
     }
   ],
   "globalStyle": {

@@ -122,6 +122,9 @@ export default {
       ],
     };
   },
+  onLoad(options) {
+    if (options.current) this.listConfig.current = Number(options.current);
+  },
   methods: {
     setCurrent(val) {
       this.listConfig.current = val;
@@ -138,8 +141,5 @@ export default {
   width: 100%;
   height: 100%;
   font-size: $base-font;
-  .time-picker {
-    margin-top: 20rpx;
-  }
 }
 </style>

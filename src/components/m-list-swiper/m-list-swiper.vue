@@ -56,6 +56,9 @@ export default {
 <style lang="scss" scoped>
 .list {
   height: 100%;
+  .u-subsection {
+    margin-bottom: 20rpx;
+  }
   .list-data {
     margin-top: 20rpx;
     height: calc(100% - 46px - 22.5px);

@@ -69,7 +69,7 @@ export default {
 }
 
 .list-container {
-  height: calc(100% - 60rpx);
+  height: calc(100% - 80rpx);
   display: flex;
   flex-direction: column;
   background: $white;
@@ -81,7 +81,7 @@ export default {
     // background: pink;
     display: flex;
     justify-content: space-between;
-    align-items: end;
+    align-items: flex-end;
     background: $primary-color;
     padding-top: 40rpx;
     border-radius: 20rpx 20rpx 0 0;

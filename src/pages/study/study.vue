@@ -16,13 +16,19 @@
           </view>
           <text>任务列表</text>
         </view>
-        <view class="credit-rank content-item" @click="jumpToPage('/pages/creditRank/CreditRank')">
+        <view
+          class="credit-rank content-item"
+          @click="jumpToPage('/pages/creditRank/CreditRank')"
+        >
           <view class="image-box">
             <image src="/static/study/rank.png"></image>
           </view>
           <text>学分排名</text>
         </view>
-        <view class="credit-breakdown content-item">
+        <view
+          class="credit-breakdown content-item"
+          @click="jumpToPage('/pages/creditBreakdown/CreditBreakdown')"
+        >
           <view class="image-box">
             <image src="/static/study/breakdown.png"></image>
           </view>
@@ -36,87 +42,60 @@
         <view class="content-item">
           <view class="item-title"> 文件精神 </view>
           <view class="item-list">
-            <view class="item-list-item">
+            <view
+              class="item-list-item"
+              v-for="item in listData"
+              :key="item.id"
+              @click="showLessonInfo(item.id)"
+            >
               <view class="image">
-                <image src="/static/study/video.jpeg"></image>
+                <image :src="item.image"></image>
               </view>
-              <view class="video-text">永远跟党走</view>
-            </view>
-            <view class="item-list-item">
-              <view class="image">
-                <image src="/static/study/video.jpeg"></image>
-              </view>
-              <view class="video-text">永远跟党走</view>
-            </view>
-            <view class="item-list-item">
-              <view class="image">
-                <image src="/static/study/video.jpeg"></image>
-              </view>
-              <view class="video-text text-nowrap"
-                >永远跟党走永远跟党走永远跟党走永远跟党走</view
-              >
+              <view class="video-text">{{ item.title }}</view>
             </view>
           </view>
-          <view class="more">查看更多</view>
+          <view class="more" @click="seeMore('文件精神')">查看更多</view>
         </view>
         <view class="content-item">
           <view class="item-title"> 党史学习 </view>
           <view class="item-list">
-            <view class="item-list-item">
+            <view
+              class="item-list-item"
+              v-for="item in listData"
+              :key="item.id"
+              @click="showLessonInfo(item.id)"
+            >
               <view class="image">
-                <image src="/static/study/video.jpeg"></image>
+                <image :src="item.image"></image>
               </view>
-              <view class="video-text">永远跟党走</view>
-            </view>
-            <view class="item-list-item">
-              <view class="image">
-                <image src="/static/study/video.jpeg"></image>
-              </view>
-              <view class="video-text">永远跟党走</view>
-            </view>
-            <view class="item-list-item">
-              <view class="image">
-                <image src="/static/study/video.jpeg"></image>
-              </view>
-              <view class="video-text text-nowrap"
-                >永远跟党走永远跟党走永远跟党走永远跟党走</view
-              >
+              <view class="video-text">{{ item.title }}</view>
             </view>
           </view>
-          <view class="more">查看更多</view>
+          <view class="more" @click="seeMore('党史学习')">查看更多</view>
         </view>
         <view class="content-item">
           <view class="item-title"> 在线视频 </view>
           <view class="item-list video">
-            <view class="item-list-item">
+            <view
+              class="item-list-item"
+              v-for="item in listData"
+              :key="item.id"
+              @click="showLessonInfo(item.id)"
+            >
               <view class="image">
-                <image src="/static/study/video.jpeg"></image>
+                <image :src="item.image"></image>
               </view>
-              <view class="video-text">永远跟党走</view>
-            </view>
-            <view class="item-list-item">
-              <view class="image">
-                <image src="/static/study/video.jpeg"></image>
-              </view>
-              <view class="video-text">永远跟党走</view>
-            </view>
-            <view class="item-list-item">
-              <view class="image">
-                <image src="/static/study/video.jpeg"></image>
-              </view>
-              <view class="video-text text-nowrap"
-                >永远跟党走永远跟党走永远跟党走永远跟党走</view
-              >
+              <view class="video-text">{{ item.title }}</view>
             </view>
           </view>
-          <view class="more">查看更多</view>
+          <view class="more" @click="seeMore('在线视频')">查看更多</view>
         </view>
       </view>
     </view>
     <view class="answers mb-20 box-shadow">
       <view class="title">专项答题</view>
       <view class="content">
-        <view class="content-item">
+        <view class="content-item" @click="pageToAnswer">
           <view class="image-box">
             <image src="/static/study/answer.png"></image>
           </view>
@@ -136,19 +115,50 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      listData: [
+        {
+          id: 1,
+          image: "/static/study/video.jpeg",
+          title: "永远跟党走",
+        },
+        {
+          id: 2,
+          image: "/static/study/video.jpeg",
+          title: "永远跟党走",
+        },
+        {
+          id: 3,
+          image: "/static/study/video.jpeg",
+          title: "永远跟党走",
+        },
+      ],
+    };
   },
   methods: {
     jumpToPage(url) {
       uni.navigateTo({ url });
     },
+    showLessonInfo(id) {
+      uni.navigateTo({
+        url: `/pages/lessonDetail/LessonDetail?id=${id}`
+      })
+    },
+    seeMore(type) {
+      uni.navigateTo({
+        url: `/pages/lessonsList/LessonsList?type=${type}`
+      })
+    },
+    pageToAnswer() {
+      uni.navigateTo({ url: '/pages/answer/Answer' })
+    }
   },
 };
 </script>
 
 <style lang="scss" scoped>
 .study {
-  padding-bottom: calc(50px + 20rpx);
+  padding-bottom: 120rpx;
   .title {
     font-size: $medium-font;
     font-weight: 700;

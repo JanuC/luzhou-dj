@@ -93,6 +93,7 @@ export default {
   display: flex;
   font-size: $base-font;
   font-weight: 700;
+  // padding: 20rpx;
   .select-box {
     color: $primary-color;
     display: flex;
