@@ -30,8 +30,6 @@ export default {
       this.radioValue = value;
       this.$emit("getRadioValue", this.radioValue);
     },
-    // 将选中的值传递给父组件
-    sendToFather() {},
   },
 };
 </script>
